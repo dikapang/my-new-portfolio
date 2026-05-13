@@ -23,7 +23,7 @@ const Layout = () => {
       ></div>
 
       <div
-        className={`fixed top-0 z-[-2] h-full w-full bg-white transition-opacity duration-500 ease-in-out ${isDarkMode ? 'opacity-0' : 'opacity-100'
+        className={`fixed top-0 z-[-2] h-full w-full bg-gray-100 transition-opacity duration-500 ease-in-out ${isDarkMode ? 'opacity-0' : 'opacity-100'
           }`}
       >
         <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px] transition-all duration-500 ease-in-out">
