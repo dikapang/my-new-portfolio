@@ -12,6 +12,8 @@ const ProjectDetailPage = lazy(() => import('../pages/ProjectsDetail/ProjectsDet
 const ContactPage = lazy(() => import('../pages/Contact/ContactPage'));
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 const LoginPage = lazy(() => import('../pages/Login/LoginPage'));
+const ForgotPasswordPage = lazy(() => import('../pages/ForgotPassword/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('../pages/ResetPassword/ResetPasswordPage'));
 const ProfileAdminPage = lazy(() => import('../pages/Admin/Profile/ProfileAdmin'));
 const CertificatesAdminPage = lazy(() => import('../pages/Admin/Certificates/CertificatesAdminPage'));
 const ProjectsAdminPage = lazy(() => import('../pages/Admin/Projects/ProjectsAdminPage'));
@@ -81,6 +83,24 @@ const Router = () => {
             element={
               <LazyLoad>
                 <LoginPage />
+              </LazyLoad>
+            }
+          />
+
+          <Route
+            path="/forgot-password"
+            element={
+              <LazyLoad>
+                <ForgotPasswordPage />
+              </LazyLoad>
+            }
+          />
+
+          <Route
+            path="/reset-password"
+            element={
+              <LazyLoad>
+                <ResetPasswordPage />
               </LazyLoad>
             }
           />

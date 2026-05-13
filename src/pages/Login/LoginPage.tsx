@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Card } from '../../components/common';
 import { useTheme } from '../../context/ThemeProvider';
 import { supabase } from '../../lib/supabase';
@@ -155,6 +155,15 @@ const LoginPage: React.FC = () => {
                         >
                             {loading ? 'Logging in...' : 'Login'}
                         </button>
+
+                        <div className="mt-4 text-center">
+                            <Link 
+                                to="/forgot-password"
+                                className={`text-sm ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
+                            >
+                                Forgot your password?
+                            </Link>
+                        </div>
                     </form>
                 </Card>
             </div>
