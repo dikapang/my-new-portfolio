@@ -81,7 +81,7 @@ const Footer = () => {
               <Link to="/" className="flex items-center group -ml-6">
                 <img src="/images/logo/logo.png" alt="Logo" className="h-18 w-18" />
               </Link>
-              <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-slate-700'}`}>
+              <h2 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-blue-600'}`}>
                 Dika Pangestu
               </h2>
             </div>
@@ -99,7 +99,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className={`p-2 sm:p-2.5 rounded-full ${isDarkMode
                     ? 'bg-blue-900/30 text-blue-300 hover:bg-blue-800/50 hover:text-blue-200'
-                    : 'bg-slate-200 text-slate-600 hover:bg-slate-300 hover:text-slate-700'
+                    : 'bg-blue-100 text-blue-600 hover:bg-blue-200 hover:text-blue-700'
                     } transition-colors duration-300`}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -115,7 +115,7 @@ const Footer = () => {
             <motion.div key={section.title} variants={itemVariants} className="col-span-1">
               <h3 className={`text-sm font-semibold uppercase tracking-wider mb-4 pb-2 border-b ${isDarkMode
                 ? 'text-blue-300 border-blue-800/50'
-                : 'text-slate-700 border-slate-300'
+                : 'text-blue-700 border-blue-200'
                 }`}>
                 {section.title}
               </h3>
@@ -126,11 +126,11 @@ const Footer = () => {
                       to={link.path}
                       className={`text-sm flex items-center gap-2 group ${isDarkMode
                         ? 'text-neutral-300 hover:text-blue-300'
-                        : 'text-neutral-600 hover:text-slate-700'
+                        : 'text-neutral-600 hover:text-blue-600'
                         } transition-colors duration-300`}
                     >
                       {link.icon ? (
-                        <span className={`${isDarkMode ? 'text-blue-400 group-hover:text-blue-300' : 'text-slate-500 group-hover:text-slate-600'}`}>
+                        <span className={`${isDarkMode ? 'text-blue-400 group-hover:text-blue-300' : 'text-blue-500 group-hover:text-blue-600'}`}>
                           {link.icon}
                         </span>
                       ) : null}                      <span className="group-hover:translate-x-1 transition-transform duration-300">
@@ -159,7 +159,7 @@ const Footer = () => {
                 placeholder="Your email address"
                 className={`px-3 sm:px-4 py-2 text-sm rounded-md focus:outline-none focus:ring-2 ${isDarkMode
                   ? 'bg-blue-900/30 border border-blue-800 text-white placeholder:text-neutral-400 focus:ring-blue-500'
-                  : 'bg-slate-50 border border-slate-300 text-neutral-800 placeholder:text-neutral-500 focus:ring-slate-400'
+                  : 'bg-white border border-blue-200 text-neutral-800 placeholder:text-neutral-500 focus:ring-blue-400'
                   }`}
                 required
               />
@@ -167,7 +167,7 @@ const Footer = () => {
                 type="submit"
                 className={`px-4 py-2 text-sm font-medium rounded-md transition-colors duration-300 ${isDarkMode
                   ? 'bg-blue-600 hover:bg-blue-500 text-white'
-                  : 'bg-slate-600 hover:bg-slate-700 text-white'
+                  : 'bg-blue-500 hover:bg-blue-600 text-white'
                   }`}
               >
                 Subscribe
@@ -179,7 +179,7 @@ const Footer = () => {
         <div className="my-6 sm:my-8">
           <div className={`h-px w-full ${isDarkMode
             ? 'bg-gradient-to-r from-transparent via-blue-500/40 to-transparent'
-            : 'bg-gradient-to-r from-transparent via-slate-400/30 to-transparent'
+            : 'bg-gradient-to-r from-transparent via-blue-400/30 to-transparent'
             }`}></div>
         </div>
 
