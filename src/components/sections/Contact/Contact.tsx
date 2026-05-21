@@ -283,7 +283,7 @@ const Contact = () => {
                   <div className={`${isDarkMode ? 'recaptcha-dark' : 'recaptcha-light'}`}>
                     <ReCAPTCHA
                       ref={recaptchaRef}
-                      sitekey="6Ld3jTUrAAAAAI5YXqkIUj3FlDlTsxep2kzWzWBK" 
+                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                       onChange={handleRecaptchaChange}
                       theme={isDarkMode ? "dark" : "light"}
                     />
