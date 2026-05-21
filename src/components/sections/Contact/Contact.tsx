@@ -102,7 +102,7 @@ const Contact = () => {
       last_name: formRef.current.last_name.value,
       email: formRef.current.email.value,
       message: formRef.current.message.value,
-      to_email: 'dikaphangestu@gmail.com',
+      to_email: 'annkrey6@gmail.com',
       'g-recaptcha-response': recaptchaValue
     };
 
@@ -169,7 +169,7 @@ const Contact = () => {
 
               <div className="flex items-center mt-5">
                 <FaEnvelope className={`h-5 w-5 mr-3 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-blue-800'}`}>dikaphangestu@gmail.com</span>
+                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-blue-800'}`}>annkrey6@gmail.com</span>
               </div>
 
               <div className="flex items-center mt-5">

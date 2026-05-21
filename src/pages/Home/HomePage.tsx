@@ -1,10 +1,11 @@
-import { Hero, QuickIntro, TechStack } from "../../components/sections";
+import { Hero, TechStack, QuickIntro, PricingSection } from "../../components/sections";
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
       <TechStack />
+      <PricingSection />
       <QuickIntro />
     </div>
   );

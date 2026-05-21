@@ -8,6 +8,7 @@ export { default as Hero } from './Hero/Hero';
 export { default as ProfileSection } from './ProfileSection/ProfileSection';
 export { default as FunFacts } from './FunFacts/FunFacts';
 export { default as Certificates } from './Certificates/Certificates';
+export { default as PricingSection } from './PricingSection/PricingSection';
 export { default as ProfileAdmin } from './Admin/ProfileAdmin/ProfileAdmin';
 export { default as ProjectAdmin } from './Admin/ProjectAdmin/ProjectAdmin';
 export { default as CertificatesAdmin } from './Admin/CertificatesAdmin/CertificatesAdmin';
