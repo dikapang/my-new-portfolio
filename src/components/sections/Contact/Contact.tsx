@@ -93,10 +93,12 @@ const Contact = () => {
     }
 
     const serviceId = 'service_imtu3nt';
-    const templateId = 'template_aon9mi6';
-    const publicKey = 'hvocQ7BX4zrswN2UZ';
+    const templateId = 'template_vmcc9pp';
+    const publicKey = 'S_mpNoUZoSIaN1KAE';
 
     const templateParams = {
+      name: `${formRef.current.first_name.value} ${formRef.current.last_name.value}`,
+      title: formRef.current.message.value,
       first_name: formRef.current.first_name.value,
       last_name: formRef.current.last_name.value,
       email: formRef.current.email.value,
