@@ -92,7 +92,7 @@ const Contact = () => {
       return;
     }
 
-    const serviceId = 'service_xwnqhb8';
+    const serviceId = 'service_imtu3nt';
     const templateId = 'template_aon9mi6';
     const publicKey = 'hvocQ7BX4zrswN2UZ';
 
