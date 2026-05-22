@@ -1,16 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaEnvelope, FaClock, FaSpinner } from "react-icons/fa";
 import { useTheme } from "../../../context/ThemeProvider";
 import { Button, Card, PageHeader } from "../../common";
 import emailjs from '@emailjs/browser';
-import ReCAPTCHA from "react-google-recaptcha";
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const Contact = () => {
   const { theme } = useTheme();
   const isDarkMode = theme === 'dark';
   const formRef = useRef<HTMLFormElement>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [turnstileValue, setTurnstileValue] = useState<string | null>(null);
   const [formStatus, setFormStatus] = useState<{
     isSubmitting: boolean;
     isSuccess: boolean | null;
@@ -20,14 +20,13 @@ const Contact = () => {
     isSuccess: null,
     message: '',
   });
-  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [errors, setErrors] = useState<{
     email?: string;
     message?: string;
   }>({});
 
-  const handleRecaptchaChange = (token: string | null) => {
-    setRecaptchaValue(token);
+  const handleTurnstileChange = (token: string | null) => {
+    setTurnstileValue(token);
   };
 
   const validateForm = () => {
@@ -49,11 +48,11 @@ const Contact = () => {
     return isValid;
   };
 
-  const verifyRecaptcha = async (_token: string) => {
+  const verifyTurnstile = async (_token: string) => {
     try {
       return true;
     } catch (error) {
-      console.error('reCAPTCHA verification error:', error);
+      console.error('Turnstile verification error:', error);
       return false;
     }
   };
@@ -67,11 +66,11 @@ const Contact = () => {
       return;
     }
 
-    if (!recaptchaValue) {
+    if (!turnstileValue) {
       setFormStatus({
         isSubmitting: false,
         isSuccess: false,
-        message: 'Please complete the reCAPTCHA verification.'
+        message: 'Please complete the Turnstile verification.'
       });
       return;
     }
@@ -82,13 +81,13 @@ const Contact = () => {
       message: 'Sending your message...'
     });
 
-    const isRecaptchaValid = await verifyRecaptcha(recaptchaValue);
+    const isTurnstileValid = await verifyTurnstile(turnstileValue);
 
-    if (!isRecaptchaValid) {
+    if (!isTurnstileValid) {
       setFormStatus({
         isSubmitting: false,
         isSuccess: false,
-        message: 'reCAPTCHA verification failed. Please try again.'
+        message: 'Turnstile verification failed. Please try again.'
       });
       return;
     }
@@ -103,7 +102,7 @@ const Contact = () => {
       email: formRef.current.email.value,
       message: formRef.current.message.value,
       to_email: 'annkrey6@gmail.com',
-      'g-recaptcha-response': recaptchaValue
+      'cf-turnstile-response': turnstileValue
     };
 
     try {
@@ -116,8 +115,7 @@ const Contact = () => {
       });
 
       formRef.current?.reset();
-      recaptchaRef.current?.reset();
-      setRecaptchaValue(null);
+      setTurnstileValue(null);
       setErrors({});
     } catch (error) {
       console.error('Email sending error:', error);
@@ -280,14 +278,12 @@ const Contact = () => {
                 </div>
 
                 <div className="w-full px-3 mb-6">
-                  <div className={`${isDarkMode ? 'recaptcha-dark' : 'recaptcha-light'}`}>
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                      onChange={handleRecaptchaChange}
-                      theme={isDarkMode ? "dark" : "light"}
-                    />
-                  </div>
+                  <Turnstile
+                    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+                    onSuccess={handleTurnstileChange}
+                    onError={() => setTurnstileValue(null)}
+                    onExpire={() => setTurnstileValue(null)}
+                  />
                 </div>
 
                 {formStatus.message && (
@@ -309,7 +305,7 @@ const Contact = () => {
                     size="md"
                     type="submit"
                     className="mt-4 md:mt-0"
-                    disabled={formStatus.isSubmitting || !recaptchaValue}
+                    disabled={formStatus.isSubmitting || !turnstileValue}
                   >
                     {formStatus.isSubmitting ? (
                       <span className="flex items-center">
